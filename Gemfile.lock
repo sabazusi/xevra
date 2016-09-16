@@ -64,8 +64,10 @@ GEM
     faye-websocket (0.9.2)
       eventmachine (>= 0.12.0)
       websocket-driver (>= 0.5.1)
+    gli (2.14.0)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    hashie (3.4.5)
     i18n (0.7.0)
     jbuilder (2.6.0)
       activesupport (>= 3.0.0, < 5.1)
@@ -130,11 +132,14 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
-    slack-api (1.2.4)
-      faraday (>= 0.7, < 0.10)
-      faraday_middleware (~> 0.8)
-      faye-websocket (~> 0.9.2)
-      multi_json (~> 1.0, >= 1.0.3)
+    slack-ruby-client (0.7.7)
+      activesupport
+      faraday
+      faraday_middleware
+      gli
+      hashie
+      json
+      websocket-driver
     spring (1.7.2)
     sprockets (3.7.0)
       concurrent-ruby (~> 1.0)
@@ -170,12 +175,14 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   dotenv-rails
+  eventmachine
+  faye-websocket
   jbuilder (~> 2.0)
   jquery-rails
   rails (= 4.2.6)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
-  slack-api
+  slack-ruby-client
   spring
   sqlite3
   turbolinks
