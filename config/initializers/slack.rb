@@ -6,7 +6,12 @@ end
 client = Slack::RealTime::Client.new
 
 client.on :message do |data|
-  client.message channel: data.channel, text: 'HAHAHAHA'
+  if !data.file.nil?
+    case data.file.filetype
+    when "jpg", "jpeg", "png", "gif" then
+      client.message channel: data.channel, text: "<@#{data.user}>さんが画像を送信しました"
+    end
+  end
 end
 
 
