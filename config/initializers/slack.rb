@@ -12,9 +12,6 @@ client.on :message do |data|
   if !data.file.nil?
     case data.file.filetype
     when "jpg", "jpeg", "png", "gif" then
-      p data.file
-      p '-----'
-      p data.file.permalink_public
       open(data.file.permalink_public) do |data|
         p data.read
       end
