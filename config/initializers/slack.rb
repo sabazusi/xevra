@@ -12,9 +12,6 @@ client.on :message do |data|
   if !data.file.nil?
     case data.file.filetype
     when "jpg", "jpeg", "png", "gif" then
-      open(data.file.permalink_public) do |data|
-        p data.read
-      end
       #client.message channel: data.channel, text: "<@#{data.user}>さんが画像を送信しました"
     end
   end
@@ -28,6 +25,9 @@ client.on :message do |data|
 
   #TODO read file from slack-file
   file = nil
+  open('http://csrabbitry.jp/rabbit/netherland/female/CSSU/3.jpg') do |data|
+    file = data.read
+  end
   if !file.nil?
     request = Vision::BatchAnnotateImagesRequest.new({
       requests: [
@@ -39,6 +39,7 @@ client.on :message do |data|
         )
       ]
     })
+    p vision.annotate_image(request).inspect
   end
 
 
